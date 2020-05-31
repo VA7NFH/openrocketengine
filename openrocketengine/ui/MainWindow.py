@@ -3,8 +3,10 @@ from openrocketengine.core.interface import standard_types, read_config
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 import platform
-if platform.system() == 'Linux':
+
+if platform.system() == "Linux":
     import os.path
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -127,7 +129,7 @@ class MainWindow(QMainWindow):
         self.tab_2 = QWidget()
         self.verticalLayout_2 = QVBoxLayout(self.tab_2)
         self.output = QTextBrowser(self.tab_2)
-        self.output.setStyleSheet("font: \"Georgia\"")
+        self.output.setStyleSheet('font: "Georgia"')
         self.output.setObjectName("output")
         self.verticalLayout_2.addWidget(self.output)
         self.tabWidget.addTab(self.tab_2, "Output")
@@ -166,9 +168,9 @@ class MainWindow(QMainWindow):
         QMetaObject.connectSlotsByName(self)
 
     def updateDisplay(self):
-        if platform.system() == 'Linux':
+        if platform.system() == "Linux":
             homedir = os.path.expanduser("~")
-            shortfn = self.filename.replace(homedir,"~")
+            shortfn = self.filename.replace(homedir, "~")
         else:
             shortfn = self.filename
         self.setWindowTitle(shortfn + " - Open Rocket Engine")
@@ -196,58 +198,59 @@ class MainWindow(QMainWindow):
         self.area_ratio.setValue(0)
 
     def pullFromDisplay(self):
-        self.config['name'] = self.name.text()
-        self.config['thrust'] = self.thrust.value()
-        self.config['Tc'] = self.Tc.value()
-        self.config['pc'] = self.pc.value()
-        self.config['pe'] = self.pe.value()
-        self.config['MR'] = self.MR.value()
-        self.config['MW'] = self.MW.value()
-        self.config['gamma'] = self.gamma.value()
-        self.config['lstar'] = self.lstar.value()
-        self.config['area_ratio'] = self.area_ratio.value()
+        self.config["name"] = self.name.text()
+        self.config["thrust"] = self.thrust.value()
+        self.config["Tc"] = self.Tc.value()
+        self.config["pc"] = self.pc.value()
+        self.config["pe"] = self.pe.value()
+        self.config["MR"] = self.MR.value()
+        self.config["MW"] = self.MW.value()
+        self.config["gamma"] = self.gamma.value()
+        self.config["lstar"] = self.lstar.value()
+        self.config["area_ratio"] = self.area_ratio.value()
 
     def newAction(self):
-        self.filename = "";
+        self.filename = ""
         self.config = {}
         self.clearDisplay()
 
     def saveAsAction(self):
-        fname = QFileDialog.getSaveFileName(self, 'Open file',
-                '',"Config Files (*.cfg)")[0]
-        if (fname == ""):
-            return;
+        fname = QFileDialog.getSaveFileName(
+            self, "Open file", "", "Config Files (*.cfg)"
+        )[0]
+        if fname == "":
+            return
         else:
             self.savefile(fname)
 
     def saveAction(self):
         self.savefile("")
 
-    def savefile(self, new = ""):
+    def savefile(self, new=""):
         self.pullFromDisplay()
-        if (new != ""):
-            self.filename = new;
+        if new != "":
+            self.filename = new
 
-        with open(self.filename,'w+') as file:
-            output = "name "+self.config['name']
+        with open(self.filename, "w+") as file:
+            output = "name " + self.config["name"]
             output += "\nunits SI"
-            output += "\nthrust "+str(self.config['thrust'])
-            output += "\nTc "+str(self.config['Tc'])
-            output += "\npc "+str(self.config['pc'])
-            output += "\npe "+str(self.config['pe'])
-            output += "\nMR "+str(self.config['MR'])
-            output += "\nMW "+str(self.config['MW'])
-            output += "\ngamma "+str(self.config['gamma'])
-            output += "\nlstar "+str(self.config['lstar'])
-            output += "\narea_ratio "+str(self.config['area_ratio'])
+            output += "\nthrust " + str(self.config["thrust"])
+            output += "\nTc " + str(self.config["Tc"])
+            output += "\npc " + str(self.config["pc"])
+            output += "\npe " + str(self.config["pe"])
+            output += "\nMR " + str(self.config["MR"])
+            output += "\nMW " + str(self.config["MW"])
+            output += "\ngamma " + str(self.config["gamma"])
+            output += "\nlstar " + str(self.config["lstar"])
+            output += "\narea_ratio " + str(self.config["area_ratio"])
             file.write(output)
 
     def load(self):
-        fname = QFileDialog.getOpenFileName(self, 'Open file',
-                '',"Config Files (*.cfg)")[0]
-        if (fname == ""):
-            print("test")
-            return;
+        fname = QFileDialog.getOpenFileName(
+            self, "Open file", "", "Config Files (*.cfg)"
+        )[0]
+        if fname == "":
+            return
         self.filename = fname
 
         self.config = read_config(self.filename)
