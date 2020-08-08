@@ -258,8 +258,8 @@ class MainWindow(QMainWindow):
 
     def run(self):
         if not self.config:
-            QMessageBox.critical(self, "Error", "No input file!");
-            return;
+            QMessageBox.critical(self, "Error", "No input file!")
+            return
         engine = Engine(**self.config)
         self.tabWidget.setCurrentIndex(1)
         self.output.setText(engine.text_output())
