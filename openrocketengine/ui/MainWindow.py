@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         self.label_15.setText("Pascals")
         self.gridLayout.addWidget(self.label_15, 4, 2, 1, 1)
         self.label_13 = QLabel(self.tab)
-        self.label_13.setText("Pascals")
+        self.label_13.setText("K")
         self.gridLayout.addWidget(self.label_13, 2, 2, 1, 1)
         self.label_3 = QLabel(self.tab)
         self.label_3.setText("Thrust")
