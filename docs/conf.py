@@ -137,7 +137,7 @@ latex_documents = [
         "openrocketengine Documentation",
         "cmflannery",
         "manual",
-    ),
+    )
 ]
 
 
@@ -164,7 +164,7 @@ texinfo_documents = [
         "openrocketengine",
         "One line description of project.",
         "Miscellaneous",
-    ),
+    )
 ]
 
 
