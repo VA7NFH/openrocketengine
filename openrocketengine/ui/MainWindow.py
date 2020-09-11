@@ -253,4 +253,41 @@ class MainWindow(QMainWindow):
             return
         engine = Engine(**self.config)
         self.tabWidget.setCurrentIndex(1)
-        self.output.setText(engine.text_output())
+        self.output.append("Engine Name: " + engine.name)
+        self.output.append("")
+        self.output.append("Thrust: " + str(engine.thrust) + " N")
+        self.output.append("Thrust Vac: " + str(engine.thrust_vac) + " N")
+        self.output.append("Isp: " + str(engine.Isp) + " s")
+        self.output.append("Isp Vac: " + str(engine.Isp_vac) + " s")
+        self.output.append("Mdot: " + str(engine.mdot) + " kg/s")
+        self.output.append("Mixture Ratio: " + str(engine.MR) + ":1")
+        self.output.append("")
+        self.output.append("Geometry:")
+        self.output.append("Ac, Chamber Area: " + str(engine.Ac) + " m^2")
+        self.output.append("Rc, Chamber Radius: " + str(engine.Rc) + " m")
+        self.output.append("At, Throat Area: " + str(engine.At) + " m^2")
+        self.output.append("Rt, Throat Radius: " + str(engine.Rt) + " m")
+        self.output.append("Ae, Exit Area: " + str(engine.Ae) + " m^2")
+        self.output.append("Re, Exit Radius: " + str(engine.Re) + " m")
+        self.output.append("Rn, Radius Leaving Throat: " + str(engine.Rn) + " m")
+        self.output.append(
+            "Ea, expansion area ratio (Ae/At): "
+            + str(engine.expansion_area_ratio)
+            + ":1"
+        )
+        self.output.append(
+            "Ec, contraction area ratio (Ac/Ae): "
+            + str(engine.contraction_area_ratio)
+            + ":1"
+        )
+        self.output.append(
+            "Thetac, contraction angle: " + str(engine.contraction_angle) + " degrees"
+        )
+        self.output.append("L*: " + str(engine.lstar) + " m")
+        self.output.append("Vc, chamber volume: " + str(engine.Vc) + " m")
+        self.output.append(
+            "lcyl, cylindrical section of combustion chamber: "
+            + str(engine.lcyl)
+            + " m"
+        )
+        self.output.append("length of nozzle: " + str(engine.ln) + " m")
