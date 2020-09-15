@@ -248,11 +248,13 @@ class MainWindow(QMainWindow):
         self.updateDisplay()
 
     def run(self):
+        self.saveAction()
         if not self.config:
             QMessageBox.critical(self, "Error", "No input file!")
             return
         engine = Engine(**self.config)
         self.tabWidget.setCurrentIndex(1)
+        self.output.setText("")
         self.output.append("Engine Name: " + engine.name)
         self.output.append("")
         self.output.append("Thrust: " + str(engine.thrust) + " N")
