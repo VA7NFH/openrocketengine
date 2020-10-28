@@ -178,15 +178,15 @@ class MainWindow(QMainWindow):
 
     def clearDisplay(self):
         self.name.setText("")
-        self.thrust.setText(0)
-        self.Tc.setText(0)
-        self.pc.setText(0)
-        self.pe.setText(0)
-        self.MR.setText(0)
-        self.MW.setText(0)
-        self.gamma.setText(0)
-        self.lstar.setText(0)
-        self.area_ratio.setText(0)
+        self.thrust.setText(str(0))
+        self.Tc.setText(str(0))
+        self.pc.setText(str(0))
+        self.pe.setText(str(0))
+        self.MR.setText(str(0))
+        self.MW.setText(str(0))
+        self.gamma.setText(str(0))
+        self.lstar.setText(str(0))
+        self.area_ratio.setText(str(0))
 
     def pullFromDisplay(self):
         self.config["name"] = self.name.text()
