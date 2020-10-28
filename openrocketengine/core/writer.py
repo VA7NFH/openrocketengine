@@ -3,7 +3,7 @@ from string import ascii_uppercase
 
 
 def generate(engine):
-    """ generate()
+    """generate()
     creates output excel file with engine performance and geometric parameters
     """
     outputName = "engine.xlsx"

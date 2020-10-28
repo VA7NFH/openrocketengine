@@ -232,8 +232,8 @@ class Engine:
 
     @property
     def cstar(self):
-        """ cstar, characteristic velocity
-            get_cstar() calculates and returns the value of cstar """
+        """cstar, characteristic velocity
+        get_cstar() calculates and returns the value of cstar"""
         gamma = self.gamma
         Rspecific = self.Rspecific
         Tc = self.Tc
@@ -291,7 +291,7 @@ class Engine:
 
     @property
     def Isp(self):
-        """ Isp, Specific Impulse [s]
+        """Isp, Specific Impulse [s]
 
         Specific Impulse is a commonly used performance metric for rocket
         engines
@@ -303,14 +303,13 @@ class Engine:
 
     @property
     def Isp_vac(self):
-        """ Isp_vac, Specific Impulse in vacuum [s]
-        """
+        """Isp_vac, Specific Impulse in vacuum [s]"""
         thrust = self.thrust + (self.pe - 0) * self.Ae
         return thrust / (self.mdot * self.g0)
 
     @property
     def mdot(self):
-        """ mdot, total mass flow rate
+        """mdot, total mass flow rate
 
         typically,
             get_mdot(Isp=Isp, thrust=thrust, g0=g0)"""
@@ -335,17 +334,17 @@ class Engine:
 
     @property
     def Tt(self):
-        """ Calculate the throat temperature
+        """Calculate the throat temperature
 
-        Derived from isentropic flow-critical temperature ratio """
+        Derived from isentropic flow-critical temperature ratio"""
 
         return self.Tc / (1 + (self.gamma - 1) / 2)
 
     @property
     def pt(self):
-        """ Calculate the throat pressure
+        """Calculate the throat pressure
 
-        Derived from the isentropic flow-critical pressure ratio """
+        Derived from the isentropic flow-critical pressure ratio"""
         pc = self.pc
         gamma = self.gamma
         return pc * (2 / (gamma + 1)) ** (gamma / (gamma - 1))
@@ -371,7 +370,7 @@ class Engine:
 
     @property
     def Ma_exit(self):
-        """ Calculate and set the mach number at nozzle exit
+        """Calculate and set the mach number at nozzle exit
 
         derived from pressure ratio equation"""
         # ue = self.ue
@@ -428,8 +427,8 @@ class Engine:
 
     @property
     def Ae(self):
-        """ Ae returns the exit area of the rocket, assuming ideal expansion
-        in a non-vacuum environment """
+        """Ae returns the exit area of the rocket, assuming ideal expansion
+        in a non-vacuum environment"""
         return self.calc_A(self.Ma_exit)
 
     @property
@@ -444,8 +443,8 @@ class Engine:
 
     @property
     def Rn(self):
-        """ radius of circular entrance region for parabolic approximation (rao)
-        i.e. region leaving the throat """
+        """radius of circular entrance region for parabolic approximation (rao)
+        i.e. region leaving the throat"""
         return 0.382 * self.Rt  # from Huzel and Huang, 76
 
     @property
@@ -460,8 +459,8 @@ class Engine:
 
     @property
     def contraction_area_ratio(self):
-        """ The contraction area ratio is the value of Ac/Ae. A minimum value of 3 is recommended
-        to consistently achieve mach 1 in the throat """
+        """The contraction area ratio is the value of Ac/Ae. A minimum value of 3 is recommended
+        to consistently achieve mach 1 in the throat"""
         if self.__contraction_area_ratio:
             return self.__contraction_area_ratio
         else:
@@ -478,11 +477,11 @@ class Engine:
         self.__contraction_area_ratio = value
 
     def calc_A(self, Ma):
-        """ calc_A returns the area at an arbitrary station relative to the
+        """calc_A returns the area at an arbitrary station relative to the
         critical value, i.e. the throat in choked flow
 
         calc_A does not set any property of the class or class instance, only
-        a value is returned """
+        a value is returned"""
 
         At = self.At
         gamma = self.gamma
@@ -530,9 +529,9 @@ class Engine:
 
     @property
     def bell_length(self):
-        """ the percentage length of a 15 degree conical nozzle
+        """the percentage length of a 15 degree conical nozzle
 
-        default = 0.8 """
+        default = 0.8"""
 
         return self.__bell_length
 
