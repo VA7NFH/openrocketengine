@@ -562,6 +562,8 @@ class Engine:
         self._write_performance(performanceWorksheet)
         self._write_geometry(geometryWorksheet)
 
+        workbook.close()
+
     def _write_performance(self, performanceWorksheet):
         """Write performance values to worksheet"""
         performanceWorksheet.write("A1", "Engine Name:")
