@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.setupUi()
         self.filename = ""
-        self.config = {}
+        self.config = {"units": "SI"}
         self.clearDisplay()
 
     def setupUi(self):
@@ -203,7 +203,7 @@ class MainWindow(QMainWindow):
 
     def newAction(self):
         self.filename = ""
-        self.config = {}
+        self.config = {"units": "SI"}
         self.clearDisplay()
 
     def saveAsAction(self):
