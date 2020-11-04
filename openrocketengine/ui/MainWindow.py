@@ -14,6 +14,7 @@ class MainWindow(QMainWindow):
         self.setupUi()
         self.filename = ""
         self.config = {}
+        self.clearDisplay()
 
     def setupUi(self):
         self.setWindowTitle("Open Rocket Engine")
@@ -215,7 +216,10 @@ class MainWindow(QMainWindow):
             self.savefile(fname)
 
     def saveAction(self):
-        self.savefile("")
+        if self.filename == "":
+            self.saveAsAction()
+        else:
+            self.savefile()
 
     def savefile(self, new=""):
         self.pullFromDisplay()
